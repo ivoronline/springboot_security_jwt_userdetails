@@ -89,8 +89,8 @@ public class JWTUtil {
 
     //GET CLAIMS
     Claims claims      = getClaims(jwt);
-    String username    = (String) claims.get("username");
-    String authorities = (String) claims.get("authorities");
+    String username    = (String) claims.get("username");     System.out.println(username);
+    String authorities = (String) claims.get("authorities");  System.out.println(authorities);
 
     //CREATE AUTHORITIES
     String   authoritiesString = authorities.replace("[","").replace("]","").replace(" ","");

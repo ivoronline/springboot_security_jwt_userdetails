@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,8 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   //========================================================================
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.authorizeRequests().antMatchers("/GetJWT").permitAll();
     httpSecurity.formLogin();
+    httpSecurity.authorizeRequests().antMatchers("/GetJWT", "/Authenticate").permitAll(); //Anonymous access
+    httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //For filter
   }
 
   //=================================================================
@@ -43,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public UserDetailsService userDetailsServiceBean() throws Exception {
 
     //CREATE USERS
-    UserDetails myuser  = User.withUsername("myuser" ).password("myuserpassword" ).roles("USER", "ADMIN").build();
+    UserDetails myuser = User.withUsername("myuser").password("myuserpassword").roles("USER","ADMIN").build();
 
     //LOAD USERS
     return new InMemoryUserDetailsManager(myuser);

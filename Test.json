@@ -1,0 +1,4 @@
+{
+  "authorities": "[ROLE_ADMIN, ROLE_USER]",
+  "username"   : "myuser"
+}
