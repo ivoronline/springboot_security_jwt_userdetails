@@ -1,4 +1,4 @@
-package com.ivoronline.springboot_security_jwt_userdetails;
+package com.ivoronline.springboot_security_jwt_userdetails.controllers;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RequestMapping;

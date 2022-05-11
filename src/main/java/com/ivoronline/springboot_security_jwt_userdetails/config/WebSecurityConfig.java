@@ -1,4 +1,4 @@
-package com.ivoronline.springboot_security_jwt_userdetails;
+package com.ivoronline.springboot_security_jwt_userdetails.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.formLogin();
     httpSecurity.authorizeRequests().antMatchers("/GetJWT", "/Authenticate").permitAll(); //Anonymous access
-    httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //For filter
   }
 
   //=================================================================
